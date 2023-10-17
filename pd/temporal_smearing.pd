@@ -1,6 +1,6 @@
 #N canvas 182 182 870 533 12;
 #X obj 54 29 inlet~;
-#X obj 54 204 outlet~;
+#X obj 55 230 outlet~;
 #X obj 54 96 hilbert~;
 #X obj 292 17 inlet;
 #X obj 288 76 snapshot~;
@@ -40,8 +40,7 @@
 #X connect 10 0 6 0;
 #X connect 11 0 5 0;
 #X restore 39 266 pd pan_core;
-#X text 256 437 Adapted from [equal_power_pan~] \, Hans-Christoph Steiner
-\, 2004;
+#X text 256 437 Adapted from [equal_power_pan~] \, Hans-Christoph Steiner \, 2004;
 #X text 411 449 comment;
 #X obj 128 46 inlet~;
 #X connect 0 0 8 0;
@@ -54,25 +53,24 @@
 #X connect 7 0 6 0;
 #X connect 8 0 2 0;
 #X connect 11 0 8 2;
-#X restore 79 156 pd equal_power_crossfade;
-#X text 392 26 oscillator moves phase by weighting the two phase shifted
-hilbert outputs, f 29;
+#X restore 54 187 pd equal_power_crossfade;
 #X obj 212 18 loadbang;
-#X floatatom 358 141 5 0 0 0 - - -;
-#X text 420 142 for debugging: should cycle between 0 and 1;
+#X floatatom 358 141 5 0 0 0 - - - 0;
 #X obj 291 51 osc~ 2;
-#X obj 176 24 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
+#X obj 176 24 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 212 51 metro 200;
+#X text 462 55 this oscillator cycles between 0 and 1 every 2 seconds, f 35;
+#X text 462 102 output should cycle between 0.333 and 0.666 (number field is for debugging), f 35;
+#X text 238 185 oscillator moves phase of the input signal by weighting the two phase shifted hilbert outputs, f 39;
 #X connect 0 0 2 0;
 #X connect 2 0 6 0;
 #X connect 2 1 6 1;
-#X connect 3 0 11 0;
+#X connect 3 0 9 0;
 #X connect 4 0 5 0;
 #X connect 5 0 6 2;
-#X connect 5 0 9 0;
+#X connect 5 0 8 0;
 #X connect 6 0 1 0;
-#X connect 8 0 13 0;
+#X connect 7 0 11 0;
+#X connect 9 0 4 0;
+#X connect 10 0 11 0;
 #X connect 11 0 4 0;
-#X connect 12 0 13 0;
-#X connect 13 0 4 0;

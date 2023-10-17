@@ -1,7 +1,7 @@
-#N canvas 269 136 768 546 12;
+#N canvas 269 136 866 609 12;
 #X obj 24 25 inlet~;
 #X obj 25 487 outlet~;
-#X obj 574 264 vu 19 200 empty empty -1 -10 0 12 -66577 -1 1 0;
+#X obj 124 516 vu 19 200 empty empty -1 -10 0 12 #404040 #000000 1 0;
 #N canvas 329 161 625 417 vu 0;
 #X obj 59 129 env~ 1024;
 #X obj 161 111 abs~;
@@ -12,23 +12,18 @@
 #X obj 59 287 - 100;
 #X obj 59 361 outlet;
 #X obj 161 361 outlet;
-#X text 344 307 Check the help file of env~ and slop~ for more details.
-, f 31;
+#X text 344 307 Check the help file of env~ and slop~ for more details., f 31;
 #X obj 239 89 expr 1000 / $f1;
-#X floatatom 239 117 5 0 0 0 - - -;
+#X floatatom 239 117 5 0 0 0 - - - 0;
 #X obj 161 146 slop~ 0 0 0 0 1e+09;
 #X obj 239 18 inlet;
-#X floatatom 239 57 5 0 0 0 - - -;
+#X floatatom 239 57 5 0 0 0 - - - 0;
 #X text 359 89 convert to hz;
 #X text 282 118 hz;
 #X text 284 57 peak decay time in ms;
 #X obj 59 171 t f b;
-#X text 345 132 The env~ object is dedicated to RMS analysis. Its output
-is in dB (0-100 range \, pd style) but needs to be converted to dBFS
-(and we do that by simply subtracting 100)., f 31;
-#X text 345 225 The slop~ object is used here for peak detection. We
-need to convert the output to dB with rmstodb and also subtract by
-100 to convert it to dBFS., f 31;
+#X text 345 132 The env~ object is dedicated to RMS analysis. Its output is in dB (0-100 range \, pd style) but needs to be converted to dBFS (and we do that by simply subtracting 100)., f 31;
+#X text 345 225 The slop~ object is used here for peak detection. We need to convert the output to dB with rmstodb and also subtract by 100 to convert it to dBFS., f 31;
 #X connect 0 0 18 0;
 #X connect 1 0 12 0;
 #X connect 2 0 3 0;
@@ -45,65 +40,52 @@ need to convert the output to dB with rmstodb and also subtract by
 #X connect 18 0 6 0;
 #X connect 18 1 2 0;
 #X restore 116 477 pd vu;
-#X floatatom 128 252 6 0 1000 0 - decay -;
-#X floatatom 357 161 5 0 0 0 - - -;
-#X text 309 161 ratio;
-#X text 387 130 reference;
-#X floatatom 250 259 5 0 0 0 - - -;
-#X obj 252 304 + 100;
-#X obj 254 339 dbtorms;
+#X floatatom 148 452 6 0 1000 0 - decay - 0;
+#X floatatom 255 163 5 0 0 0 - - - 0;
+#X floatatom 149 227 5 0 0 0 - - - 0;
+#X obj 149 252 + 100;
+#X obj 149 276 dbtorms;
 #X obj 27 422 *~;
-#X obj 251 222 expr (((($f1 - $f3) / $f2) - $f1 + $f3) * $f4);
-#X floatatom 56 303 10 0 0 0 - - -;
-#X obj 357 31 inlet;
-#X obj 462 101 loadbang;
-#X floatatom 461 159 5 0 0 0 - - -;
-#X floatatom 571 159 5 0 0 0 - - -;
-#X msg 572 130 -1, f 4;
-#X text 621 131 expand (-1) or compress (1);
-#N canvas 0 50 450 250 (subpatch) 0;
-#X array line2 100 float 3;
-#A 0 0.845941 0.845944 0.845946 0.845949 0.845952 0.845955 0.845957
-0.84596 0.845963 0.845966 0.845968 0.845971 0.845974 0.845977 0.845979
-0.845982 0.845985 0.845988 0.84599 0.845993 0.845996 0.845999 0.846001
-0.846004 0.846007 0.84601 0.846012 0.846015 0.846018 0.846021 0.846023
-0.846026 0.846029 0.846032 0.846034 0.846037 0.84604 0.846043 0.846045
-0.846048 0.846051 0.846053 0.846056 0.846059 0.846062 0.846064 0.846067
-0.84607 0.846073 0.846075 0.846078 0.846081 0.846084 0.846086 0.846089
-0.846092 0.846095 0.846097 0.8461 0.846103 0.846106 0.846108 0.846111
-0.846114 0.846117 0.846119 0.846122 0.846125 0.846128 0.84613 0.846133
-0.846136 0.846139 0.846141 0.846144 0.846147 0.84615 0.846152 0.846155
-0.846158 0.84616 0.846163 0.846166 0.846169 0.846171 0.846174 0.846177
-0.84618 0.846182 0.846185 0.846188 0.846191 0.846193 0.846196 0.846199
-0.846202 0.846204 0.846207 0.84621 0.846213;
-#X coords 0 2 100 -1 200 140 1 0 0;
-#X restore 347 383 graph;
+#X obj 149 199 expr (((($f1 - $f3) / $f2) - $f1 + $f3) * $f4);
+#X floatatom 56 303 10 0 0 0 - - - 0;
+#X obj 255 101 inlet;
+#X obj 362 98 loadbang;
+#X floatatom 361 156 5 0 0 0 - - - 0;
+#X floatatom 468 161 5 0 0 0 - - - 0;
+#X msg 468 132 -1, f 4;
 #X obj 56 337 pack \$1 500;
-#X obj 188 86 env~ 8192;
+#X obj 80 109 env~ 8192;
 #X obj 56 367 vline~;
 #X obj 56 393 clip~ 0.1 1.2;
-#X msg 462 130 90, f 4;
-#X connect 0 0 11 0;
-#X connect 0 0 22 0;
+#X msg 362 127 90, f 4;
+#X text 204 479 vu meter for debugging, f 12;
+#X text 252 57 expander ratio, f 8;
+#X text 466 94 operation: expand (-1) or compress (1);
+#X text 349 21 reference level (everything below is reduced \, everything above amplified), f 21;
+#X text 81 53 enelope gives smoothed loudness of the current signal, f 20;
+#X text 165 298 Expansion factor is calculated from expander equation. Pack + vline generate a ramp of 500ms to smooth out the amplification factor (reduces artifacts);
+#X text 166 384 Final amplification factor is clipped \, to avoid clipping of actual audio signal (reduces artifacts), f 55;
+#X connect 0 0 9 0;
+#X connect 0 0 18 0;
 #X connect 3 0 2 0;
 #X connect 3 1 2 1;
 #X connect 4 0 3 1;
-#X connect 5 0 12 1;
-#X connect 8 0 9 0;
-#X connect 9 0 10 0;
-#X connect 10 0 13 0;
-#X connect 11 0 1 0;
-#X connect 11 0 3 0;
-#X connect 12 0 8 0;
+#X connect 5 0 10 1;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 11 0;
+#X connect 9 0 1 0;
+#X connect 9 0 3 0;
+#X connect 10 0 6 0;
+#X connect 11 0 17 0;
+#X connect 12 0 5 0;
 #X connect 13 0 21 0;
-#X connect 14 0 5 0;
-#X connect 15 0 25 0;
-#X connect 15 0 18 0;
-#X connect 16 0 12 2;
-#X connect 17 0 12 3;
-#X connect 18 0 17 0;
-#X connect 21 0 23 0;
-#X connect 22 0 12 0;
-#X connect 23 0 24 0;
-#X connect 24 0 11 1;
-#X connect 25 0 16 0;
+#X connect 13 0 16 0;
+#X connect 14 0 10 2;
+#X connect 15 0 10 3;
+#X connect 16 0 15 0;
+#X connect 17 0 19 0;
+#X connect 18 0 10 0;
+#X connect 19 0 20 0;
+#X connect 20 0 9 1;
+#X connect 21 0 14 0;
